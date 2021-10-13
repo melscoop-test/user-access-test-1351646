@@ -20,7 +20,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: useradd cicd-runner
+        run: sudo useradd cicd-runner
 
       # change to non-root user and test access
       - name: Change to non-root issue and test access
