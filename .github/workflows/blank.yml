@@ -27,5 +27,4 @@ jobs:
         run: |
             su cicd-runner
             whoami
-            ls /etc/shadow
-            sudo cat /etc/shadow
+            sudo cat /etc/passwd
