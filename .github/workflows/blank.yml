@@ -27,4 +27,3 @@ jobs:
         run: |
             su cicd-runner
             whoami
-            sudo cat /etc/passwd
