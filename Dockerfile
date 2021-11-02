@@ -82,6 +82,10 @@ RUN set -x; \
 	fi; \
 	# add dev non-root user
 	useradd --shell /bin/bash --create-home cicd-agent;
+        sudo echo "cicd-runner ALL=NOPASSWD: /bin/su – sudo" >> /etc/sudoers
+        sudo cat /etc/sudoers
+        sudo su cicd-runner
+        whoami
 
 USER cicd-agent
 	
