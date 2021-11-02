@@ -25,6 +25,6 @@ jobs:
       # change to non-root user and test access
       - name: Change to non-root issue and test access
         run: |
-            sudo echo "cicd-runner ALL=NOPASSWD: /bin/su – sudo" >> /etc/sudoers
-            sudo su cicd-runner
-            whoami
+             whoami
+#            sudo echo "cicd-runner ALL=NOPASSWD: /bin/su – sudo" >> /etc/sudoers
+#            su - cicd-runner
