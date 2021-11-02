@@ -9,7 +9,7 @@ jobs:
   ci:
     name: Continuous Integration
     runs-on: ubuntu-20.04
-#    container: melscoop-test/user-access-test-1351646:ci-${{ matrix.python-version }}
+    container: ${{ github.repository }}-${{ matrix.python-version }}
     outputs:
       package_version: ${{ steps.proj_ver_determiner.outputs.package_version }}
       package_version_tag: ${{ steps.proj_ver_determiner.outputs.package_version_tag }}
