@@ -23,11 +23,6 @@ jobs:
         run: sudo useradd cicd-runner
 
       # change to non-root user and test access
-      - name: Change to non-root issue and test access
+      - name: Check user
         run: |
-             sudo cat /etc/sudoers
-             whoami
-             sudo echo "cicd-runner ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
-             sudo cat /etc/sudoers | grep "cicd-runner"
-             sudo -u cicd-runner bash
              whoami
