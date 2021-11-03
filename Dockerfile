@@ -8,6 +8,7 @@ ARG IS_CI
 RUN set -x; \
 	apt update; \
 	apt install -y git \
+	        sudo \
 		curl \
 		wget; \
 	if [ "${PYTHON_VERSION}" != "2.7" ]; then \
@@ -82,11 +83,17 @@ RUN set -x; \
 		pip install pydeps; \
 	fi; \
 	# add dev non-root user
-	useradd --shell /bin/bash --create-home cicd-runner; \
-        sudo echo "cicd-runner ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers; \
-             sudo cat /etc/sudoers | grep "cicd-runner"; \
-             sudo -u cicd-runner bash; \
-	     
+	adduser --disabled-password \
+	--gecos '' cicd-runner
+	adduser cicd-runner sudo
+	echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> \
+        /etc/sudoers
+	   
 USER cicd-runner
 	
+RUN sudo apt update -y
+
+WORKDIR /home/cicd-runner/src
+COPY .. 
+
 # Built with ❤ by [Pipeline Foundation](https://pipeline.foundation)
