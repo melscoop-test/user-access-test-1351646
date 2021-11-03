@@ -82,12 +82,8 @@ RUN set -x; \
 		pip install pydeps; \
 	fi; \
 	# add dev non-root user
-	useradd --shell /bin/bash --create-home cicd-agent;
-        sudo echo "cicd-runner ALL=NOPASSWD: /bin/su – sudo" >> /etc/sudoers
-        sudo cat /etc/sudoers
-        sudo su cicd-runner
-        whoami
+	useradd --shell /bin/bash --create-home cicd-runner;
 
-USER cicd-agent
+USER cicd-runner
 	
 # Built with ❤ by [Pipeline Foundation](https://pipeline.foundation)
