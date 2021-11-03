@@ -27,6 +27,6 @@ jobs:
         run: |
              cat /etc/sudoers
              whoami
-             sudo echo "cicd-runner ALL=NOPASSWD: /bin/su – sudo" >> /etc/sudoers
-             su - cicd-runner
+             sudo echo echo "cicd-runner ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
+             sudo cat /etc/sudoers | grep "cicd-runner"
              whoami
